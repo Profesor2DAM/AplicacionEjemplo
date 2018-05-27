@@ -1,0 +1,46 @@
+<div class="crud-header">
+	<mat-form-field>
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar datos" />
+	</mat-form-field>
+</div>
+
+
+<div class="crud-container mat-elevation-z8">
+	<mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackById" class="animate">
+		<!-- COLUMNA ID -->
+		<ng-container matColumnDef="id">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+			<mat-cell *matCellDef="let asignatura">{{asignatura.id}} </mat-cell>
+		</ng-container>
+		<!-- COLUMNA NAME -->
+		<ng-container matColumnDef="name">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+			<mat-cell *matCellDef="let asignatura">{{asignatura.name}} </mat-cell>
+		</ng-container>
+		<!-- COLUMNA GENDER -->
+		<ng-container matColumnDef="hours">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Horas</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">{{alumno.hours}} </mat-cell>
+		</ng-container>
+
+		<!-- COLUMNA EDIT -->
+		<ng-container matColumnDef="edit">
+			<mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
+			<mat-cell *matCellDef="let asignatura">
+				<a mat-raised-button color="primary" routerLink="/asignaturas/{{asignatura.id}}/edit">Editar</a>
+			</mat-cell>
+		</ng-container>
+
+			<!-- COLUMNA DELETE -->
+<ng-container matColumnDef="delete">
+  <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+  <mat-cell *matCellDef="let asignatura">
+    <button mat-raised-button color="warn" (click)="remove(asignatura)">Eliminar</button>
+  </mat-cell>
+</ng-container>
+
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let asignatura; columns: displayedColumns;"></mat-row>
+	</mat-table>
+	<mat-paginator [pageSizeOptions]="[2, 5, 10, 25, 100]"></mat-paginator>
+</div>

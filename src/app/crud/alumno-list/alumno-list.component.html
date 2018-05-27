@@ -1,0 +1,64 @@
+<div class="crud-header">
+	<mat-form-field>	
+	  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar datos"/>
+	</mat-form-field>
+  </div>
+
+
+<div class="crud-container mat-elevation-z8">
+	  <mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackById" class="animate">
+		<!-- COLUMNA ID -->
+		<ng-container matColumnDef="id">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">{{alumno.id}} </mat-cell>
+		</ng-container>
+		<!-- COLUMNA NAME -->
+		<ng-container matColumnDef="name">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">{{alumno.name}} </mat-cell>
+		</ng-container>
+		<!-- COLUMNA GENDER -->
+		<ng-container matColumnDef="gender">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Sexo</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">{{alumno.gender}} </mat-cell>
+		</ng-container>
+		<!-- COLUMNA AGE -->
+		<ng-container matColumnDef="age">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Edad</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">{{alumno.age}} </mat-cell>
+		</ng-container>
+		<!-- COLUMNA PHOTO -->
+		<ng-container matColumnDef="photo">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Foto</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">{{alumno.photo}} </mat-cell>
+		</ng-container>
+		<!-- COLUMNA SUBJECTS -->
+		<ng-container matColumnDef="subjects">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Asignaturas</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">{{alumno.subjects}} </mat-cell>
+		</ng-container>
+
+			<!-- COLUMNA EDIT -->
+		<ng-container matColumnDef="edit">
+			<mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">
+				<a mat-raised-button color="primary" routerLink="/alumnos/{{alumno.id}}/edit">Editar</a>
+			</mat-cell>
+		</ng-container>
+
+			<!-- COLUMNA DELETE -->
+		<ng-container matColumnDef="delete">
+			<mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+			<mat-cell *matCellDef="let alumno">
+				<button mat-raised-button color="warn" (click)="remove(alumno.id)">Eliminar</button>
+			</mat-cell>
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let alumno; columns: displayedColumns;"></mat-row>
+		
+	</mat-table>
+	<mat-paginator [pageSizeOptions]="[2, 5, 10, 25, 100]"></mat-paginator>
+</div>
+
+	

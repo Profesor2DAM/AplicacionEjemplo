@@ -1,0 +1,41 @@
+<mat-toolbar>
+  <mat-toolbar-row color="primary">
+    {{title}}
+    <a 
+    routerLinkActive="active"
+    routerLink="/alumnos"
+    [routerLinkActiveOptions]="{exact:true}"
+    >
+      Alumnos
+    </a>
+    <a 
+    routerLinkActive="active"
+    routerLink="/alumnos/add"
+    [routerLinkActiveOptions]="{exact:true}"
+    >
+      Añadir alumno
+    </a>
+    <a 
+    routerLinkActive="active"
+    routerLink="/asignaturas"
+    [routerLinkActiveOptions]="{exact:true}"
+    >
+      Asignaturas
+    </a>
+    <a 
+    routerLinkActive="active"
+    routerLink="/asignaturas/add"
+    [routerLinkActiveOptions]="{exact:true}"
+    >
+      Añadir asignatura
+    </a>
+    <a 
+    routerLinkActive="active"
+    routerLink="/alumnos/asignar"
+    [routerLinkActiveOptions]="{exact:true}"
+    >
+      Asignar asignaturas
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

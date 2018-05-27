@@ -1,0 +1,35 @@
+<form [formGroup]="asignaturaForm">
+  <mat-form-field class="full-width">
+    <input
+    matInput
+    #name
+    placeholder="Nombre"
+    [formControl]="nameFormControl"
+    [(ngModel)]="asignatura.name"
+    [errorStateMatcher]="matcher"
+    autocomplete="off"
+    />
+    <mat-error *ngIf="nameFormControl.hasError('required')">
+      Introduce un nombre para la asignatura
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input
+    matInput
+    #hours
+    placeholder="Horas"
+    [formControl]="hoursFormControl"
+    [(ngModel)]="asignatura.hours"
+    [errorStateMatcher]="matcher"
+    autocomplete="off"
+    />
+    <mat-error *ngIf="hoursFormControl.hasError('required')">
+      Introduce las horas de la asignatura
+    </mat-error>
+  </mat-form-field>
+
+  <button [disabled]="!asignaturaForm.valid" mat-raised-button="accent" (click)="process()">
+    {{btnBtn}}
+  </button>
+</form>

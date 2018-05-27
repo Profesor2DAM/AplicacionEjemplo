@@ -1,0 +1,71 @@
+<form [formGroup]="alumnoForm">
+    <mat-form-field class="full-width">
+      <input
+      matInput
+      #name
+      placeholder="Nombre"
+      [formControl]="nameFormControl"
+      [(ngModel)]="alumno.name"
+      [errorStateMatcher]="matcher"
+      autocomplete="off"
+      />
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Introduce el nombre del alumno
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <mat-select 
+      #gender
+      placeholder="Sexo"
+      [formControl]="genderFormControl"
+      [(ngModel)]="alumno.gender"
+      [errorStateMatcher]="matcher"
+      autocomplete="off">
+        <mat-option value="Hombre">Hombre</mat-option>
+        <mat-option value="Mujer">Mujer</mat-option>
+      </mat-select>
+     
+      <mat-error *ngIf="genderFormControl.hasError('required')">
+        Introduce el sexo del alumno
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input
+        matInput
+        #age
+        placeholder="Edad"
+        [formControl]="ageFormControl"
+        [(ngModel)]="alumno.age"
+        [errorStateMatcher]="matcher"
+        autocomplete="off"
+        />
+        <mat-error *ngIf="ageFormControl.hasError('required')">
+          Introduce la edad del alumno
+        </mat-error>
+      </mat-form-field>
+  
+     <!--  <mat-form-field class="full-width">
+        <input class="ng-hide" id="input-file-id" multiple type="file"
+        matInput
+        #photo
+        placeholder="Imagen"
+        [formControl]="photoFormControl"
+        [(ngModel)]="alumno.photo"
+        [errorStateMatcher]="matcher"
+        autocomplete="off"
+        />
+        <label for="input-file-id" class="md-button md-raised md-primary"></label>
+
+        <mat-error *ngIf="photoFormControl.hasError('required')">
+          Introduce la foto del alumno
+        </mat-error>
+      </mat-form-field>-->
+
+    <button [disabled]="!alumnoForm.valid" mat-raised-button="accent" (click)="process()">
+      {{btnBtn}}
+    </button>
+  </form>
+
+
